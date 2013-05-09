@@ -1,0 +1,22 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
+    json (1.7.7)
+    mime-types (1.23)
+    multi_json (1.7.3)
+    multi_xml (0.5.3)
+    multipart-post (1.2.0)
+    wuparty (1.2.4)
+      httparty (>= 0.6.1)
+      mime-types (>= 1.16)
+      multipart-post (>= 1.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  json (~> 1.7.7)
+  wuparty
