@@ -2,8 +2,8 @@
 
 Bundler.require
 
-# clusters = distances with cluster size and cluster id
-#
+require_relative "lib/distances"
+
 # Put every individual into a separate cluster
 # Find the closest pair of clusters where one cluster is size 1 and the other is not full
 # Merge them into a new cluster (removing the old clusters)
@@ -12,3 +12,13 @@ Bundler.require
 # Repeat
 
 
+Infinity = 1.0/0
+current_minimum = [Infinity, 0, 0]
+
+Distances.new.each_with_index do |distance, i, j|
+  if distance < current_minimum[0]
+    current_minimum = [distance, i, j]
+  end
+end
+
+p current_minimum

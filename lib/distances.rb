@@ -42,6 +42,15 @@ class Distances
     distances[a1.id][a2.id]
   end
 
+  def each_with_index(&block)
+    distances[1..-1].each_with_index do |sub_array, i|
+      sub_array[1..-1].each_with_index do |distance, j|
+        next if i == j
+        block.call(distance, i, j)
+      end
+    end
+  end
+
   private
 
   def fill_distances
