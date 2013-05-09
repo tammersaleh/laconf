@@ -27,20 +27,34 @@ def find_minimum(distances)
   return current_minimum
 end
 
-until distances.only_one_empty_cluster_left?
-  minimum = find_minimum(distances)
-  distances.pretty_print
-  puts "Current Min: #{minimum[1]},#{minimum[2]} has distance #{minimum[0]}"
-  puts "Merging clusters #{minimum[1, 2]}"
-  puts
-  distances.merge_clusters!(*minimum[1, 2])
+def find_maximum(distances)
+  current_minimum = [0, 0, 0]
+
+  distances.each_with_clusters do |distance, cluster1, cluster2|
+    next unless cluster1.mergable_with?(cluster2)
+    if distance > current_minimum[0]
+      current_minimum = [distance, cluster1.id, cluster2.id]
+    end
+  end
+
+  return current_minimum
 end
-distances.pretty_print
-puts
+
+until distances.only_one_empty_cluster_left?
+  result = find_minimum(distances)
+  # result = find_maximum(distances)
+  # distances.pretty_print
+  # puts "Current Min: #{result[1]},#{result[2]} has distance #{result[0]}"
+  # puts "Merging clusters #{result[1, 2]}"
+  # puts
+  distances.merge_clusters!(*result[1, 2])
+end
+# distances.pretty_print
+# puts
 
 distances.clusters.each do |cluster|
   puts "Cluster #{cluster.id}:"
   cluster.people.each do |person|
-    puts "  #{person.name}"
+    puts "  #{person}"
   end
 end

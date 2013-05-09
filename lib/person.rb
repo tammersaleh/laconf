@@ -25,7 +25,7 @@ class Person
   def -(other_person)
     distance = sqrt((age - other_person.age)**2 + (countries - other_person.countries)**2)
     %i(testing drink lang eat fun guns).each do |metric|
-      distance += 10 if send(metric) != other_person.send(metric)
+      distance += 20 if send(metric) != other_person.send(metric)
     end
     return distance.ceil
   end
@@ -70,4 +70,16 @@ class Person
     hash["guns"]
   end
 
+  def to_s
+    sprintf("%30s: %12s, %12s, %12s, %7s, %4s, %24s, %20s, %25s", 
+            name, 
+            "#{age} years old",
+            "#{countries} visited",
+            testing, 
+            drink, 
+            lang, 
+            eat, 
+            fun, 
+            guns)
+  end
 end

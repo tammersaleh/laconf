@@ -60,7 +60,7 @@ class Distances
     c1_index = index(cluster1_id)
     c2_index = index(cluster2_id)
 
-    distances[c2_index][1..-1] = zip_min(distances[c1_index][1..-1],
+    distances[c2_index][1..-1] = linkage(distances[c1_index][1..-1],
                                          distances[c2_index][1..-1])
     distances[c2_index][0].merge(distances[0][c1_index])
     distances[0][c2_index] = distances[c2_index][0]
@@ -72,8 +72,9 @@ class Distances
     end
   end
 
-  def zip_min(ary1, ary2)
-    ary1.zip(ary2).map(&:min)
+  def linkage(ary1, ary2)
+    # http://en.wikipedia.org/wiki/Complete-linkage_clustering
+    ary1.zip(ary2).map(&:max)
   end
 
   def assert(value, message)
