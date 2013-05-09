@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/tsaleh/wuparty.git
+  revision: 400a27bb904aaa97f3d31fc35b3bb3c254a0f94c
+  specs:
+    wuparty (1.2.4)
+      httparty (>= 0.6.1)
+      mime-types (>= 1.16)
+      multipart-post (>= 1.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -12,10 +21,6 @@ GEM
     multi_json (1.7.3)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
-    wuparty (1.2.4)
-      httparty (>= 0.6.1)
-      mime-types (>= 1.16)
-      multipart-post (>= 1.0.1)
 
 PLATFORMS
   ruby
@@ -23,4 +28,4 @@ PLATFORMS
 DEPENDENCIES
   active_support
   json (~> 1.7.7)
-  wuparty
+  wuparty!

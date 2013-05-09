@@ -25,7 +25,8 @@ class Survey
   private
 
   def normalize_entries
-    @form.entries(limit: 300).map do |entry|
+    all_entries.map do |entry|
+      puts entry["Field22"]
       {
         id:        entry["EntryId"].to_i,
         name:      entry["Field22"],
@@ -39,6 +40,13 @@ class Survey
         guns:      entry["Field21"]
       }
     end
+  end
+
+  def all_entries
+    one   = @form.entries(limit: 100)
+    two   = @form.entries(limit: 100, offset: 100)
+    three = @form.entries(limit: 100, offset: 200)
+    one + two + three
   end
 end
 
