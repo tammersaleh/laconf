@@ -4,23 +4,11 @@ require_relative 'cluster'
 class Distances
   attr_accessor :distances
 
-  # [[     , (1,1), (2,1), (3,1), (4,1), (5,1)],
-  #  [(1,1),      ,    x ,    x ,    x ,    x ],
-  #  [(2,1),      ,      ,    x ,    x ,    x ],
-  #  [(3,1),      ,      ,      ,    x ,    x ],
-  #  [(4,1),      ,      ,      ,      ,    x ],
-  #  [(5,1),      ,      ,      ,      ,      ]]
-  #
-  # ...after a round...
-  #
-  # [[     , (1,1), (2,1),      , (4,2), (5,1)],
-  #  [(1,1),      ,    x ,      , m(xx),    x ],
-  #  [(2,1),      ,      ,      , m(xx),    x ],
-  #  [(3,1),      ,      ,      , m( x),    x ],
-  #  [(4,1),      ,      ,      ,      ,    x ],
-  #  [(5,1),      ,      ,      ,      ,      ]]
-
   def initialize
+    self.distances = [[nil] + people.map {|a| Cluster.new_for_person(a)}]
+    people.each do |person|
+      distances[person.id] ||= [Cluster.new_for_person(person)]
+    end
     fill_distances
   end
 
@@ -33,8 +21,6 @@ class Distances
   end
 
   def []=(a1, a2, value)
-    self.distances   ||= [people.map {|a| Cluster.new_for_person(a)}]
-    distances[a1.id] ||= [Cluster.new_for_person(a1)]
     distances[a1.id][a2.id] = value
   end
 
@@ -42,12 +28,87 @@ class Distances
     distances[a1.id][a2.id]
   end
 
-  def each_with_index(&block)
-    distances[1..-1].each_with_index do |sub_array, i|
-      sub_array[1..-1].each_with_index do |distance, j|
+  def each_with_clusters(&block)
+    distances.each_with_index do |sub_array, i|
+      sub_array.each_with_index do |distance, j|
+        next if i == 0
+        next if j == 0
         next if i == j
-        block.call(distance, i, j)
+        assert(distances[i][0], "distances[#{i}][0] is nil.")
+        assert(distances[0][j], "distances[0][#{j}] is nil.")
+        block.call(distance, distances[i][0], distances[0][j])
       end
+    end
+  end
+
+  # [[     , (1,1), (2,1), (3,1), (4,1), (5,1)],
+  #  [(1,1),      ,      ,      ,      ,      ],
+  #  [(2,1),    x ,      ,      ,      ,      ],
+  #  [(3,1),    x ,    x ,      ,      ,      ],
+  #  [(4,1),    x ,    x ,    x ,      ,      ],
+  #  [(5,1),    x ,    x ,    x ,    x ,      ]]
+  #
+  # ...after a round...
+  #
+  # [[     , (1,1), (2,1), (4,2), (5,1)],
+  #  [(1,1),      ,      ,      ,      ],
+  #  [(2,1),    x ,      ,      ,      ],
+  #  [(4,2),  min ,  min ,      ,      ],
+  #  [(5,1),    x ,    x ,    x ,      ]]
+
+  def merge_clusters!(cluster1_id, cluster2_id)
+    c1_index = index(cluster1_id)
+    c2_index = index(cluster2_id)
+
+    distances[c2_index][1..-1] = zip_min(distances[c1_index][1..-1],
+                                         distances[c2_index][1..-1])
+    distances[c2_index][0].merge(distances[0][c1_index])
+    distances[0][c2_index] = distances[c2_index][0]
+
+    distances.delete_at(c1_index)
+    distances.each do |row|
+      row.delete_at(c1_index)
+      assert(row.length == distances.length, "Lengths don't match.")
+    end
+  end
+
+  def zip_min(ary1, ary2)
+    ary1.zip(ary2).map(&:min)
+  end
+
+  def assert(value, message)
+    raise message unless value
+  end
+
+  def only_one_empty_cluster_left?
+    clusters.reject(&:full?).length <= 1
+  end
+
+  def index(cluster_id)
+    distances[0].index {|cluster| cluster && cluster.id == cluster_id}
+  end
+
+  def clusters
+    distances[0][1..-1]
+  end
+
+  def length
+    distances.length
+  end
+
+  def pretty_print
+    distances.each do |ary|
+      print "  ["
+      ary.each do |distance|
+        if distance.nil?
+          printf "%9s", "nil"
+        elsif distance.is_a?(Cluster)
+          printf "%9s", "(#{distance.id}, #{distance.size})"
+        else
+          printf "%9d", distance
+        end
+      end
+      puts "]"
     end
   end
 

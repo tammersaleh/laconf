@@ -1,4 +1,5 @@
 class Cluster
+  MAX_SIZE = 5
   attr_accessor :id, :size, :people
 
   def self.new_for_person(person)
@@ -19,4 +20,17 @@ class Cluster
     { json_class: "Cluster", data: [ id, size, people ] }.to_json(*a)
   end
 
+  def merge(other)
+    self.people.unshift(*other.people)
+    self.size += other.size
+    raise "Oversized cluster created!" if size > MAX_SIZE
+  end
+
+  def mergable_with?(other)
+    size + other.size <= MAX_SIZE
+  end
+
+  def full?
+    size == MAX_SIZE
+  end
 end
