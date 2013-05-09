@@ -2,4 +2,4 @@ source "https://rubygems.org"
 
 gem 'json', '~> 1.7.7'
 gem "wuparty"
-# gem 'hashie'
+gem 'active_support'

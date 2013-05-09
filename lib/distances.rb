@@ -81,8 +81,11 @@ class Distances
     raise message unless value
   end
 
-  def only_one_empty_cluster_left?
-    clusters.reject(&:full?).length <= 1
+  def done?
+    unfilled_clusters = clusters.reject(&:full?)
+    return true if unfilled_clusters.size < 2
+    smallest_two = unfilled_clusters.sort[0..1]
+    return false if smallest_two[0].mergable_with?(smallest_two[1])
   end
 
   def index(cluster_id)

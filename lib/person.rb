@@ -71,7 +71,7 @@ class Person
   end
 
   def to_s
-    sprintf("%30s: %12s, %12s, %12s, %7s, %4s, %24s, %20s, %25s", 
+    sprintf("%30s: %12s, %12s, %12s, %7s, %7s, %24s, %20s, %25s", 
             name, 
             "#{age} years old",
             "#{countries} visited",

@@ -1,5 +1,5 @@
 class Cluster
-  MAX_SIZE = 5
+  MAX_SIZE = 10
   attr_accessor :id, :size, :people
 
   def self.new_for_person(person)
@@ -32,5 +32,9 @@ class Cluster
 
   def full?
     size == MAX_SIZE
+  end
+
+  def <=>(other)
+    size <=> other.size
   end
 end

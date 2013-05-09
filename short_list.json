@@ -1,0 +1,12 @@
+[
+ {"id":1,"name":"Tammer Saleh","age":35,"countries":6,"testing":"rspec","drink":"Whiskey","lang":"Ruby","eat":"Meat eater","fun":"Reading a good book","guns":"Everyone should have one"},
+ {"id":2,"name":"Ben","age":28,"countries":3,"testing":"rspec","drink":"Whiskey","lang":"Ruby","eat":"Meat eater","fun":"Reading a good book","guns":"Everyone should have one"},
+ {"id":3,"name":"André Arko","age":28,"countries":2,"testing":"rspec","drink":"Whiskey","lang":"Ruby","eat":"Meat eater","fun":"Reading a good book","guns":"Nobody should have one"},
+ {"id":4,"name":"Sebastian Deutsch","age":35,"countries":5,"testing":"rspec","drink":"Tea","lang":"Ruby","eat":"Pescatarian (fish eater)","fun":"Dancing","guns":"Nobody should have one"},
+ {"id":5,"name":"Ronan Limon Duparcmeur","age":36,"countries":4,"testing":"I don't test","drink":"Wine","lang":"Ruby","eat":"Meat eater","fun":"Reading a good book","guns":"Nobody should have one"},
+ {"id":6,"name":"Uygar Galbis","age":32,"countries":5,"testing":"rspec","drink":"Wine","lang":"Ruby","eat":"Meat eater","fun":"Dancing","guns":"Nobody should have one"},
+ {"id":7,"name":"Copious Free Time","age":38,"countries":8,"testing":"minitest","drink":"Whiskey","lang":"Ruby","eat":"Vegetarian","fun":"Reading a good book","guns":"Nobody should have one"},
+ {"id":8,"name":"Pennaforte","age":42,"countries":2,"testing":"rspec","drink":"Water","lang":"Ruby","eat":"Pescatarian (fish eater)","fun":"Reading a good book","guns":"Nobody should have one"},
+ {"id":9,"name":"asta bevainyte","age":28,"countries":4,"testing":"minitest","drink":"Tea","lang":"Ruby","eat":"Meat eater","fun":"At a restaurant","guns":"Nobody should have one"},
+ {"id":10,"name":"Simon stemplinger","age":37,"countries":10,"testing":"rspec","drink":"Whiskey","lang":"Ruby","eat":"Meat eater","fun":"At a restaurant","guns":"Nobody should have one"}
+]
