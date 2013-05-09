@@ -13,7 +13,7 @@ require_relative "lib/finder"
 # 5. If the new cluster is size 10, it is full
 # 6. Repeat
 
-finder = Finder.new(Distances.new, verbose: true)
+finder = Finder.new(Distances.new(Person.all), verbose: true)
 
 finder.clusters.each_with_index do |cluster, index|
   puts "Table #{index}, size #{cluster.size}:"

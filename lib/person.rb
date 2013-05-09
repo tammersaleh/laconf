@@ -14,7 +14,7 @@ class Person
     new(*o['data'])
   end
 
-  def self.load_all
+  def self.all
     @people ||= JSON.load(File.read("people.json")).map {|hash| Person.new(hash)}
   end
 

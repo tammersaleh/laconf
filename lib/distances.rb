@@ -4,12 +4,12 @@ require_relative 'cluster'
 class Distances
   attr_accessor :distances
 
-  def initialize
+  def initialize(people)
     self.distances = [[nil] + people.map {|a| Cluster.new_for_person(a)}]
     people.each do |person|
       distances[person.id] ||= [Cluster.new_for_person(person)]
     end
-    fill_distances
+    fill_distances(people)
   end
 
   def write
@@ -118,15 +118,11 @@ class Distances
 
   private
 
-  def fill_distances
+  def fill_distances(people)
     people.each do |person|
       people.each do |other_person|
         self[person, other_person] = person - other_person
       end
     end
-  end
-
-  def people
-    Person.load_all
   end
 end
