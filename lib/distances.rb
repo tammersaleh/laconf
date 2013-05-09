@@ -33,8 +33,8 @@ class Distances
   end
 
   def []=(a1, a2, value)
-    self.distances   ||= [answers.map {|a| Cluster.new(a)}]
-    distances[a1.id] ||= [Cluster.new(a1)]
+    self.distances   ||= [answers.map {|a| Cluster.new_for_person(a)}]
+    distances[a1.id] ||= [Cluster.new_for_person(a1)]
     distances[a1.id][a2.id] = value
   end
 

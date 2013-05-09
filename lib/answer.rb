@@ -6,6 +6,14 @@ class Answer
     self.hash = h
   end
 
+  def to_json(*a)
+    { json_class: "Answer", data: self.hash }.to_json(*a)
+  end
+
+  def self.json_create(o)
+    new(*o['data'])
+  end
+
   def self.load_all
     @answers ||= JSON.load(File.read("answers.json")).map {|hash| Answer.new(hash)}
   end
