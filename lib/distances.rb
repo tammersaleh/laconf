@@ -1,4 +1,4 @@
-require_relative 'answer'
+require_relative 'person'
 require_relative 'cluster'
 
 class Distances
@@ -33,7 +33,7 @@ class Distances
   end
 
   def []=(a1, a2, value)
-    self.distances   ||= [answers.map {|a| Cluster.new_for_person(a)}]
+    self.distances   ||= [people.map {|a| Cluster.new_for_person(a)}]
     distances[a1.id] ||= [Cluster.new_for_person(a1)]
     distances[a1.id][a2.id] = value
   end
@@ -45,14 +45,14 @@ class Distances
   private
 
   def fill_distances
-    answers.each do |answer|
-      answers.each do |other_answer|
-        self[answer, other_answer] = answer - other_answer
+    people.each do |person|
+      people.each do |other_person|
+        self[person, other_person] = person - other_person
       end
     end
   end
 
-  def answers
-    Answer.load_all
+  def people
+    Person.load_all
   end
 end

@@ -1,4 +1,4 @@
-class Answer
+class Person
   include Math
   attr_accessor :hash
   def initialize(h)
@@ -7,7 +7,7 @@ class Answer
   end
 
   def to_json(*a)
-    { json_class: "Answer", data: self.hash }.to_json(*a)
+    { json_class: "Person", data: self.hash }.to_json(*a)
   end
 
   def self.json_create(o)
@@ -15,17 +15,17 @@ class Answer
   end
 
   def self.load_all
-    @answers ||= JSON.load(File.read("answers.json")).map {|hash| Answer.new(hash)}
+    @people ||= JSON.load(File.read("people.json")).map {|hash| Person.new(hash)}
   end
 
   def self.write(entries)
-    JSON.dump(entries, File.open("answers.json", "w"))
+    JSON.dump(entries, File.open("people.json", "w"))
   end
 
-  def -(other_answer)
-    distance = sqrt((age - other_answer.age)**2 + (countries - other_answer.countries)**2)
+  def -(other_person)
+    distance = sqrt((age - other_person.age)**2 + (countries - other_person.countries)**2)
     %i(testing drink lang eat fun guns).each do |metric|
-      distance += 10 if send(metric) != other_answer.send(metric)
+      distance += 10 if send(metric) != other_person.send(metric)
     end
     return distance.ceil
   end

@@ -2,7 +2,7 @@
 
 Bundler.require
 
-require_relative 'lib/answer'
+require_relative 'lib/person'
 
 class Survey
   def initialize
@@ -18,8 +18,8 @@ class Survey
     entries.length
   end
 
-  def write_answers
-    Answer.write(entries)
+  def write_people
+    Person.write(entries)
   end
 
   private
@@ -44,5 +44,5 @@ end
 
 survey = Survey.new
 
-survey.write_answers
+survey.write_people
 puts "Downloaded #{survey.count} entries"
