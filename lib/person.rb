@@ -23,6 +23,7 @@ class Person
     JSON.dump(entries, File.open("people.json", "w"))
   end
 
+  # NOTE: This is the distance calculation
   def -(other_person)
     distance = sqrt((age - other_person.age)**2 + (countries - other_person.countries)**2)
     %i(testing drink lang eat fun guns).each do |metric|
