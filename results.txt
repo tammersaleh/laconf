@@ -1,8 +1,63 @@
-Table 0, size 5:
-             Tammer Saleh                Pennaforte            asta bevainyte         Simon stemplinger
-               André Arko
+Table 0, size 10:
+   Ronan Limon Duparcmeur        Sébastien Gruhier                  Drew Neil            matt aimonetti
+                 Fred Ngo                      Jesh           Stephen Masters              Tammer Saleh
+               Sandi Metz           Julius Markunas
 
-Table 1, size 5:
-                      Ben         Sebastian Deutsch              Uygar Galbis         Copious Free Time
-   Ronan Limon Duparcmeur
+Table 1, size 10:
+              Marc Duigou                    Marcus          Bernard Schembri        Bjørn Arild Mæland
+       Thibault Gautriaud     John Paul Ashenfelter           Nicolas Merouze               Robert Audi
+           Étienne Barrié          Olivier Gonzalez
+
+Table 2, size 10:
+           Tekin Suleyman              David vrensk     Edward Ocampo-Gooding               Brian Lopez
+      Geoffrey Grosenbach          Marcello Barnaba                      Lars              Stefan Wille
+          Roberto Sanchez           Davide Bruzzone
+
+Table 3, size 10:
+                  Andrei            Amedeo Paglione              Katrina Owen           Vincent Jacquel
+                     Dave             Adrian Pacala               Pierre-Alix        leif  terje fonnes
+                    Tumas              Jon Leighton
+
+Table 4, size 10:
+           Antoine Qu'hen                Trond Aarø             Graham Ashton           Tomas Varneckas
+                   Vilius              Dragos miron        Greggory Rothmeier                    Farzad
+                     Yann              jason rankin
+
+Table 5, size 10:
+            Paal Fageraas                Jesse Toth                   Povilas           Martin Svangren
+             Marcel Medak                       Ben                André Arko           Ryan Biesemeyer
+            Will Pragnell         Thomas Hollstegge
+
+Table 6, size 10:
+       Matthew Hutchinson                   Sigfrid          Jari Kolehmainen     Christophe Porteneuve
+          Andres Robalino              Dylan Markow                goetzinger              Igor davydov
+         Christopher Dell              Anthony winn
+
+Table 7, size 10:
+               Gar Morley           Andreas Hellwig                      Adam         Simon stemplinger
+         Quentin Brossard             Menno de Brie            Stijn Mathysen                CJ Kihlbom
+                  Olivier          Thomas Stratmann
+
+Table 8, size 10:
+        Copious Free Time    Theresa Preston-Werner             Steve Klabnik              consn dalton
+                 Anatoliy      Jessica Lynn Suttles             Erwan Kezzar             Jacki McAnally
+             Gerhard Lazu                  François
+
+Table 9, size 10:
+          Fernand Galiana              Francis Fish                     Corey        Tom Preston-Werner
+        Sebastian Deutsch                Pennaforte              Rachel Myers               Chad Fowler
+          Mike Williamson                 Matt Kern
+
+Table 10, size 2:
+             Lauri Nevala              Thijs Cadier
+
+Table 11, size 10:
+            Paul Campbell      Marc-André Cournoyer                      foca            Noé Froidevaux
+           asta bevainyte           Jeremy McAnally         Peter Butterworth               Martin Dell
+        Catherine Ruggles            Gustin Prudner
+
+Table 12, size 10:
+            Chris McGrath      Philippe Lafoucrière                       ori           David Ed Mellum
+        Christophe Levand              Uygar Galbis                      Andy         Saulius Grigaitis
+            Thibaut assus           Michael Baudino
 

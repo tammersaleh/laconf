@@ -53,7 +53,7 @@ class Distances
   # [[     , (1,1), (2,1), (4,2), (5,1)],
   #  [(1,1),      ,      ,      ,      ],
   #  [(2,1),    x ,      ,      ,      ],
-  #  [(4,2),  min ,  min ,      ,      ],
+  #  [(4,2),  new ,  new ,      ,      ],
   #  [(5,1),    x ,    x ,    x ,      ]]
 
   def merge_clusters!(cluster1_id, cluster2_id)
