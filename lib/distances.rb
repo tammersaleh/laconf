@@ -107,7 +107,7 @@ class Distances
         if distance.nil?
           printf "%9s", "nil"
         elsif distance.is_a?(Cluster)
-          printf "%9s", "(#{distance.id}, #{distance.size})"
+          printf "%9s", "(#{distance.id}:#{distance.size})"
         else
           printf "%9d", distance
         end

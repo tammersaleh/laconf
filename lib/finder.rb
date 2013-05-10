@@ -34,8 +34,9 @@ class Finder
 
   def clusters
     until distances.done?
-      # result = find_minimum
+      #result = find_minimum
       result = find_maximum
+      break if result[1].zero? or result[2].zero?
       if verbose
         distances.pretty_print
         puts "Current Min: #{result[1]},#{result[2]} has distance #{result[0]}"

@@ -13,7 +13,12 @@ require_relative "lib/finder"
 # 5. If the new cluster is size 10, it is full
 # 6. Repeat
 
-finder = Finder.new(Distances.new(Person.all), verbose: true)
+filename         = ARGV.shift || "people.json"
+Cluster.max_size = (ARGV.shift || 10).to_i
+
+people    = Person.load_all(filename)
+distances = Distances.new(people)
+finder    = Finder.new(distances, verbose: true)
 
 finder.clusters.each_with_index do |cluster, index|
   puts "Table #{index}, size #{cluster.size}:"

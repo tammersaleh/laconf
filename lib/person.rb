@@ -1,6 +1,7 @@
 class Person
   include Math
   attr_accessor :hash
+
   def initialize(h)
     raise "What?" if h.nil?
     self.hash = h
@@ -14,8 +15,8 @@ class Person
     new(*o['data'])
   end
 
-  def self.all
-    @people ||= JSON.load(File.read("people.json")).map {|hash| Person.new(hash)}
+  def self.load_all(filename)
+    @people ||= JSON.load(File.read(filename)).map {|hash| Person.new(hash)}
   end
 
   def self.write(entries)

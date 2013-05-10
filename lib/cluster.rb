@@ -1,5 +1,6 @@
 class Cluster
-  MAX_SIZE = 10
+  mattr_accessor :max_size
+  self.max_size = 10
   attr_accessor :id, :size, :people
 
   def self.new_for_person(person)
@@ -23,15 +24,15 @@ class Cluster
   def merge(other)
     self.people.unshift(*other.people)
     self.size += other.size
-    raise "Oversized cluster created!" if size > MAX_SIZE
+    raise "Oversized cluster created!" if size > Cluster.max_size
   end
 
   def mergable_with?(other)
-    size + other.size <= MAX_SIZE
+    size + other.size <= Cluster.max_size
   end
 
   def full?
-    size == MAX_SIZE
+    size == Cluster.max_size
   end
 
   def <=>(other)
