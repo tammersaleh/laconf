@@ -19,8 +19,22 @@ Cluster.max_size = (ARGV.shift || 10).to_i
 people    = Person.load_all(filename)
 distances = Distances.new(people)
 finder    = Finder.new(distances, verbose: true)
+clusters  = finder.clusters
 
-finder.clusters.each_with_index do |cluster, index|
+File.open("results.txt", "w") do |f|
+  clusters.each_with_index do |cluster, index|
+    f.puts "Table #{index}, size #{cluster.size}:"
+    cluster.people.in_groups_of(4).each do |group|
+      group.compact!
+      f.printf(group.map {|_| "%25s"}.join(" "),
+               *group.map(&:name))
+      f.puts
+    end
+    f.puts
+  end
+end
+
+clusters.each_with_index do |cluster, index|
   puts "Table #{index}, size #{cluster.size}:"
   cluster.people.in_groups_of(4).each do |group|
     group.compact!
@@ -28,5 +42,6 @@ finder.clusters.each_with_index do |cluster, index|
            *group.map(&:name))
     puts
   end
+  puts
 end
-puts
+
