@@ -17,3 +17,5 @@ algorithm (using
 to figure out where people should sit during lunch for "optimal conversation".
 
 It's probably completely broken.
+
+See [the results here](results.txt).
